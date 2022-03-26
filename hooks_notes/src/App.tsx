@@ -1,18 +1,28 @@
 import React from 'react';
 import './App.css';
-import UseStateHook from "./components/UseStateHook";
-import UseReducerHook from './components/UseReducerHook';
-import UseEffectHook from './components/UseEffectHook';
-import UseRefHook from './components/UseRefHook';
+import { Link } from 'react-router-dom';
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      Change to whatever hooks you want to see.
-      {/* <UseStateHook /> */}
-      {/* <UseReducerHook /> */}
-      {/* <UseEffectHook /> */}
-      <UseRefHook />
+      <h1>Welcome to React Hooks Guide</h1>
+      <ul>
+        <Link to="pokemon">1. Pokemon Table Example</Link>
+        <br></br>
+        <br></br>
+        <Link to="useEffect">2. useEffect Hook</Link>
+        <br></br>
+        <br></br>
+        <Link to="useReducer">3. useReducer Hook</Link>
+        <br></br>
+        <br></br>
+        <Link to="useRef">4. useRef Hook</Link>
+        <br></br>
+        <br></br>
+        <Link to="useState">5. useState Hook</Link>
+        <br></br>
+        <br></br>
+      </ul>
     </div>
   );
 }
