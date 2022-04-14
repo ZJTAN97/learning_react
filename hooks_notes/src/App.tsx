@@ -1,6 +1,6 @@
-import React from 'react';
-import './App.css';
-import { Link } from 'react-router-dom';
+import React from "react";
+import "./App.css";
+import { Link } from "react-router-dom";
 
 const App: React.FC = () => {
   return (
@@ -22,9 +22,12 @@ const App: React.FC = () => {
         <Link to="useState">5. useState Hook</Link>
         <br></br>
         <br></br>
+        <Link to="useContext">6. useContext Hook</Link>
+        <br></br>
+        <br></br>
       </ul>
     </div>
   );
-}
+};
 
 export default App;

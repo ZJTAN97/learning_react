@@ -1,29 +1,20 @@
-import React, { useEffect, useState } from 'react'
-
+import React, { useEffect, useState } from "react";
 
 const UseEffectHook: React.FC = () => {
+  const [val, setVal] = useState(1);
 
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      // use state takes in function that gives the current value and you can mutate it
+      setVal((v) => v + 1);
+    }, 1000);
 
-    const [counter, setCounter] = useState(0);
-    const [data, setData] = useState("");
+    // clean up function
+    return () => window.clearInterval(timer);
 
-    useEffect(() => {
-        fetch("https://jsonplaceholder.typicode.com/comments")
-          .then((response:any) => response.json())
-          .then(data => {
-              console.log("API IS CALLED.")
-              setData(data[0].email)
-          } )
-      }, []);
+  }, []);
 
-    return (
-        <div>
-            <button onClick={() => setCounter(counter+1)}>Increment</button>
-            {counter}
-            {data}
-        </div>
-    )
-}
-
+  return <div>{val}</div>;
+};
 
 export default UseEffectHook;
