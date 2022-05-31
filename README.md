@@ -65,3 +65,4 @@ setInterval(tick, 1000);
 <hr>
 
 ## 4. Components and Props
+- components are like javascript functions, accept arbitrary input called "props" and return React elements describing what should appear on the screen.
