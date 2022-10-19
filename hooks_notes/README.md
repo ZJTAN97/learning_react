@@ -1,46 +1,78 @@
-# Getting Started with Create React App
+# React Hooks
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Learning notes on the topic of Hooks in React
 
-## Available Scripts
+<br>
 
-In the project directory, you can run:
+# 1. React.useCallback Hook
 
-### `yarn start`
+-   Returns a memoized version of the callback function it is passed
+-   Means that the function object returned from `useCallback` will be the same between re-renders
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<br>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Background Info
 
-### `yarn test`
+-   In JavaScript, function display referential equality, means they are only considered equal if they point to the same object
+-   Therefore if you were to declare two functions with identical implementations they would not be equal to each other
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+const firstFunction = function() {
+    return 1 + 2; // same as secondFunction
+}
 
-### `yarn build`
+const secondFunction = function() {
+    return 1 + 2; // same as firstFunction
+}
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+// Same implementation, different objects
+firstFunction === secondFunction; // false
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+// Same objects!
+firstFunction === firstFunction; // true
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
 
-### `yarn eject`
+## When is this hook useful?
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+-   `useCallback` is helpful when passing callback props to highly optimised child components.
+-   Example, if a child component accepts a callback prop which relies on a referntial equality check to prevent unnecessary re-renders when the prop changes, then we will have to wrap the callback prop in `useCallback`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+function ParentComponent() {
+    const handleClick = React.useCallback(() => {
+        // this will return the same function
+        // instance between re-renders
+    }, [])
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    return (
+        <ChildComponent>
+            handleClick={handleClick}
+        />
+    )
+}
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
 
-## Learn More
+## The purpose of useCallBack()
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+-   Different function objects sharing the same code are often created inside React components
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+function MyComponent() {
+  // handleClick is re-created on each render
+  const handleClick = () => {
+    console.log('Clicked!');
+  };
+  // ...
+}
+
+```
+
+-   `handleClick` is a different function object on every rendering of `MyComponent`
+-   Inline functions are cheap, re-creation on each rendering is not a problem
+
+-   However in some cases, you need to maintain a single function instance between renderings:
+    -   A functional component wrapped inside React.memo() accepts a function object prop
+    -   When the function object is a dependency to other hooks, e.g. useEffect(..., [callback])
+    -   When the function has some internal state, e.g. when the function is debounced or throttled.
