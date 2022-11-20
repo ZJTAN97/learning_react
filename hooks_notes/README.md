@@ -1,17 +1,13 @@
-# React Hooks
+<h1> :books: React Hook Notes :books: </h1>
 
-Learning notes on the topic of Hooks in React
-
-<br>
-
-# 1. React.useCallback Hook
+# :snowflake: React.useCallback Hook :snowflake:
 
 -   Returns a memoized version of the callback function it is passed
 -   Means that the function object returned from `useCallback` will be the same between re-renders
 
 <br>
 
-## Background Info
+### Background Info
 
 -   In JavaScript, function display referential equality, means they are only considered equal if they point to the same object
 -   Therefore if you were to declare two functions with identical implementations they would not be equal to each other
@@ -33,10 +29,12 @@ firstFunction === firstFunction; // true
 
 ```
 
-## When is this hook useful?
+<br>
 
--   `useCallback` is helpful when passing callback props to highly optimised child components.
--   Example, if a child component accepts a callback prop which relies on a referntial equality check to prevent unnecessary re-renders when the prop changes, then we will have to wrap the callback prop in `useCallback`
+### When is this hook useful?
+
+-   `useCallback` is helpful when passing callback props to highly optimized child components.
+-   Example, if a child component accepts a callback prop which relies on a referential equality check to prevent unnecessary re-renders when the prop changes, then we will have to wrap the callback prop in `useCallback`
 
 ```
 function ParentComponent() {
@@ -54,7 +52,7 @@ function ParentComponent() {
 
 ```
 
-## The purpose of useCallBack()
+### The purpose of useCallBack()
 
 -   Different function objects sharing the same code are often created inside React components
 
