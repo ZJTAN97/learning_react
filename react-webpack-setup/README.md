@@ -11,3 +11,14 @@
 - React 18
 - TypeScript
 - Webpack 5
+
+<br>
+
+# :snowflake: Usage :snowflake:
+
+```
+
+yarn install
+yarn watch // starts dev server at port 3000
+
+```
