@@ -1,3 +1,6 @@
+import * as styles from "./styles.scss";
+
 export const App = () => {
-  return <div>Webpack set up by ZJTAN</div>;
+  console.log("welcome");
+  return <div className={styles.root}>Webpack set up by ZJTAN</div>;
 };
