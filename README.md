@@ -1,99 +1,26 @@
-<h1> :books: React Core Notes :books: </h1>
+# Somethings to take note
 
-# :snowflake: When does react render? :snowflake:
+# Navigate Component
 
-1. state changes
-2. parent component renders
-3. prop changes
-4. shouldComponentUpdate function returns true
-5. forceUpdate
-
-for numbers 1 and 2, React decides whether to render through shallow compare.
-I.E. pass by referenced values (shallow copy)
-
-<br>
-<br>
-
-# :snowflake: Rendering Elements :snowflake:
-
--   elements are the smallest building blocks of React apps.
--   Unlike browser DOM elements, React elements are plain objects and are cheap to create.
--   React DOM takes care of updating the DOM to match the React elements.
--   To render a React element, first pass the DOM element to `ReactDOM.createRoot()` then pass React element to `root.render()`
+Occasionally, you may find yourself needing to navigate immediately when a component mounts. Your first instinct might be to reach for useNavigate and an immediate side-effect (e.g. React.useEffect), but this is unnecessary. Instead, you can render the Navigate component to achieve the same result:
 
 ```
-const root = ReactDOM.createRoot(
-  document.getElementById('root')
-);
-const element = <h1>Hello, world</h1>;
-root.render(element);
-
-```
-
-<br>
-<br>
-
-# :snowflake: Updating rendered element :snowflake:
-
--   React elements are immutable, you cannot change its children or attributes.
--   (nobody does this but...) the only way to update the UI is to create a new element and pass it to root.render, you can use the following example for learning purposes
-
-```
-const root = ReactDOM.createRoot(
-  document.getElementById('root')
-);
-
-function tick() {
-  const element = (
-    <div>
-      <h1>Hello, world!</h1>
-      <h2>It is {new Date().toLocaleTimeString()}.</h2>
-    </div>
-  );
-  root.render(element);
+function Component() {
+  return <Navigate to="/posts/$postId" params={{ postId: 'my-first-post' }} />
 }
-
-setInterval(tick, 1000);
-
 ```
 
-<br>
-<br>
+Think of the Navigate component as a way to navigate to a route immediately when a component mounts. It's a great way to handle client-only redirects. It is definitely not a substitute for handling server-aware redirects responsibly on the server.
 
-# :snowflake: Components and Props :snowflake:
 
--   components are like javascript functions, accept arbitrary input called "props" and return React elements describing what should appear on the screen.
 
-<br>
-<br>
+# Authenticated routes
 
-# :snowflake: React `Refs` :snowflake:
+- in-built feature to redirect user upon logging them in
 
--   `Refs` provide a way to access DOM nodes or React elements created in the render method.
+https://tanstack.com/router/v1/docs/guide/authenticated-routes
 
-<br>
 
-### Some use cases of refs are
+# Scroll Restoration
 
--   Managing focus, text selection or media playback
--   Triggering imperative animations
--   Integrating with 3rd party DOM libraries
-
-<br>
-
-### The `useRef` hook
-
--   allows you to persist values between renders
--   used to store mutable value that does not cause a re-render when updated
--   can be used to access a DOM element directly
-
-<br>
-
-### Forwarding Refs
-
--   A helper function to forward a component's ref to another one.
--   By default, the ref prop only works on HTML elements, not on React components.
--   When we want to pass down a reference to a React component, we need to tell React which HTML element it should reference, as there can be more than one in our component.
-
-<br>
-<br>
+https://tanstack.com/router/v1/docs/guide/scroll-restoration
