@@ -1,0 +1,9 @@
+{
+  "name": "learning_react",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/learning_react/src",
+  "projectType": "application",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project learning_react --web",
+  "targets": {}
+}
