@@ -5,7 +5,7 @@ import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 
 export default defineConfig({
   root: __dirname,
-  cacheDir: '../../node_modules/.vite/apps/learning_react',
+  cacheDir: '../../node_modules/.vite/apps/react-hooks',
 
   server: {
     port: 4200,
@@ -25,7 +25,7 @@ export default defineConfig({
   // },
 
   build: {
-    outDir: '../../dist/apps/learning_react',
+    outDir: '../../dist/apps/react-hooks',
     emptyOutDir: true,
     reportCompressedSize: true,
     commonjsOptions: {

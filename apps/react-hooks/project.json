@@ -1,0 +1,9 @@
+{
+  "name": "react-hooks",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/react-hooks/src",
+  "projectType": "application",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project react-hooks --web",
+  "targets": {}
+}
