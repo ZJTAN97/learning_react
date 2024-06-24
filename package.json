@@ -2,7 +2,10 @@
   "name": "@learning-react/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "dev:react-hooks": "nx serve react-hooks",
+    "dev:react-patterns": "nx serve react-patterns"
+  },
   "private": true,
   "dependencies": {
     "react": "18.3.1",
