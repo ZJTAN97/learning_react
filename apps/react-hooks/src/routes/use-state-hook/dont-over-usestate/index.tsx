@@ -1,25 +1,15 @@
 import { createFileRoute } from '@tanstack/react-router';
 import KeyLearnings from './key-learnings.mdx';
-import {
-  Anchor,
-  Button,
-  Code,
-  Flex,
-  List,
-  Stack,
-  Text,
-  Box,
-} from '@mantine/core';
+import { Anchor, Button, Flex, Box } from '@mantine/core';
 import { IconArrowLeft } from '@tabler/icons-react';
 import { Link } from '@tanstack/react-router';
 import { CodeHighlight } from '@mantine/code-highlight';
 
-export const Route = createFileRoute('/use-state-hook/dont-over-usestate')({
+export const Route = createFileRoute('/use-state-hook/dont-over-usestate/')({
   component: () => <Page />,
 });
 
 const Page = () => {
-
   const code = `
   import { fetchData } from './api';
   import { computeCategories } from './utils';

@@ -13,8 +13,8 @@ export const Route = createFileRoute('/')({
           <Link to="/use-state-hook/dont-over-usestate">
             1. Do not overuse useState hook
           </Link>,
-          <Link to="/use-state-hook/dont-over-usestate">
-            2. Things to know about useState
+          <Link to="/use-state-hook/putting-props-to-usestate">
+            2. Putting props to useState
           </Link>,
         ]}
       />

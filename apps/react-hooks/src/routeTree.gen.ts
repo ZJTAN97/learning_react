@@ -12,7 +12,8 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
-import { Route as UseStateHookDontOverUsestateImport } from './routes/use-state-hook/dont-over-usestate'
+import { Route as UseStateHookPuttingPropsToUsestateIndexImport } from './routes/use-state-hook/putting-props-to-usestate/index'
+import { Route as UseStateHookDontOverUsestateIndexImport } from './routes/use-state-hook/dont-over-usestate/index'
 
 // Create/Update Routes
 
@@ -21,9 +22,15 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const UseStateHookDontOverUsestateRoute =
-  UseStateHookDontOverUsestateImport.update({
-    path: '/use-state-hook/dont-over-usestate',
+const UseStateHookPuttingPropsToUsestateIndexRoute =
+  UseStateHookPuttingPropsToUsestateIndexImport.update({
+    path: '/use-state-hook/putting-props-to-usestate/',
+    getParentRoute: () => rootRoute,
+  } as any)
+
+const UseStateHookDontOverUsestateIndexRoute =
+  UseStateHookDontOverUsestateIndexImport.update({
+    path: '/use-state-hook/dont-over-usestate/',
     getParentRoute: () => rootRoute,
   } as any)
 
@@ -38,11 +45,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/use-state-hook/dont-over-usestate': {
-      id: '/use-state-hook/dont-over-usestate'
+    '/use-state-hook/dont-over-usestate/': {
+      id: '/use-state-hook/dont-over-usestate/'
       path: '/use-state-hook/dont-over-usestate'
       fullPath: '/use-state-hook/dont-over-usestate'
-      preLoaderRoute: typeof UseStateHookDontOverUsestateImport
+      preLoaderRoute: typeof UseStateHookDontOverUsestateIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/use-state-hook/putting-props-to-usestate/': {
+      id: '/use-state-hook/putting-props-to-usestate/'
+      path: '/use-state-hook/putting-props-to-usestate'
+      fullPath: '/use-state-hook/putting-props-to-usestate'
+      preLoaderRoute: typeof UseStateHookPuttingPropsToUsestateIndexImport
       parentRoute: typeof rootRoute
     }
   }
@@ -52,7 +66,8 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren({
   IndexRoute,
-  UseStateHookDontOverUsestateRoute,
+  UseStateHookDontOverUsestateIndexRoute,
+  UseStateHookPuttingPropsToUsestateIndexRoute,
 })
 
 /* prettier-ignore-end */
@@ -64,14 +79,18 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/use-state-hook/dont-over-usestate"
+        "/use-state-hook/dont-over-usestate/",
+        "/use-state-hook/putting-props-to-usestate/"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-    "/use-state-hook/dont-over-usestate": {
-      "filePath": "use-state-hook/dont-over-usestate.tsx"
+    "/use-state-hook/dont-over-usestate/": {
+      "filePath": "use-state-hook/dont-over-usestate/index.tsx"
+    },
+    "/use-state-hook/putting-props-to-usestate/": {
+      "filePath": "use-state-hook/putting-props-to-usestate/index.tsx"
     }
   }
 }
