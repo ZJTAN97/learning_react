@@ -1,4 +1,11 @@
-import { AppShell } from '@mantine/core';
+import { AppShell, Flex, NavLink, Text } from '@mantine/core';
+import {
+  IconBrandReact,
+  IconFilterCheck,
+  IconFishHook,
+  IconGridPattern,
+  IconNetwork,
+} from '@tabler/icons-react';
 import {
   createRootRoute,
   Outlet,
@@ -11,16 +18,23 @@ export const Route = createRootRoute({
     <AppShell
       header={{ height: 50 }}
       navbar={{
-        width: 200,
+        width: 220,
         breakpoint: 'sm',
       }}
       padding="md"
     >
       <AppShell.Header>
-        <div></div>
+        <Flex mt="sm" ml="md" gap="sm">
+          <IconBrandReact color="var(--mantine-color-blue-3)" />
+          <Text>Learning React</Text>
+        </Flex>
       </AppShell.Header>
 
-      <AppShell.Navbar p="md"></AppShell.Navbar>
+      <AppShell.Navbar pt="md">
+        <NavLink active leftSection={<IconFishHook />} label="React Hooks" />
+        <NavLink leftSection={<IconGridPattern />} label="React Patterns" />
+        <NavLink leftSection={<IconNetwork />} label="React Query" />
+      </AppShell.Navbar>
 
       <AppShell.Main>
         <ScrollRestoration />

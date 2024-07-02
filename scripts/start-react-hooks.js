@@ -1,5 +1,5 @@
-const fs = require('node:fs');
-const path = require('path');
+import fs from 'node:fs';
+import path from 'path';
 
 const routerConfig = {
   routesDirectory: './apps/react-hooks/src/routes',
