@@ -1,7 +1,6 @@
 ## Key learnings from the Article
 
-- Data passed in from a parent via props are not state
-- Whenever a state setter function is only used synchronously in an
-  effect, get rid of the state
+- The initial value of a useState hook is always discarded on re-renders - it only has an effect when the component mounts.
+- you can put a key attribute on any component to tell React: "Please mount this whenever the key changes. As long as the key is the same, please re-render".
 
 ## Example to enforce learning

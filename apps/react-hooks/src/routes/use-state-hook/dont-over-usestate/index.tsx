@@ -1,8 +1,7 @@
-import { createFileRoute } from '@tanstack/react-router';
 import KeyLearnings from './key-learnings.mdx';
 import { Anchor, Button, Flex, Box } from '@mantine/core';
 import { IconArrowLeft } from '@tabler/icons-react';
-import { Link } from '@tanstack/react-router';
+import { Link, createFileRoute } from '@tanstack/react-router';
 import { CodeHighlight } from '@mantine/code-highlight';
 
 export const Route = createFileRoute('/use-state-hook/dont-over-usestate/')({
